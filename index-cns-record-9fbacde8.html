@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <title>爱游戏 — 日常查询与对照阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f5f0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #2c2c2c;
+      line-height: 1.7;
+      padding: 0 1.2rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fcfaf5;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.02), 0 8px 28px rgba(0,0,0,0.03);
+      border-radius: 28px;
+      padding: 2.4rem 1.8rem 3rem;
+      margin-top: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .page {
+        padding: 3.6rem 4rem 4rem;
+        margin-top: 2.8rem;
+        margin-bottom: 3.2rem;
+      }
+    }
+
+    /* hero */
+    .hero {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1f1f1f;
+      border-left: 5px solid #b3a998;
+      padding-left: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.05rem;
+      color: #4f4d49;
+      background: #f0ece4;
+      display: inline-block;
+      padding: 0.2rem 1rem 0.2rem 1rem;
+      border-radius: 30px;
+      margin-top: 0.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #3b3b3b;
+      max-width: 70ch;
+      margin-top: 0.4rem;
+    }
+
+    /* 区块通用 */
+    section {
+      margin-bottom: 2.8rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 450;
+      border-bottom: 1px solid #ddd6c8;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      color: #232220;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: #2d2a25;
+      margin: 1.4rem 0 0.4rem;
+    }
+
+    p {
+      margin-bottom: 0.9rem;
+    }
+
+    /* 引用/提示卡 */
+    .callout-box {
+      background: #f1ede6;
+      border-left: 4px solid #c1b29b;
+      padding: 1rem 1.4rem 1rem 1.4rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    .callout-box p {
+      margin-bottom: 0.3rem;
+    }
+
+    .callout-box strong {
+      color: #3e3a33;
+    }
+
+    .note-card {
+      background: #f0efe9;
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      margin: 1rem 0 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .note-card .label {
+      font-weight: 500;
+      color: #4e4940;
+      min-width: 6.5em;
+    }
+
+    .note-card .desc {
+      flex: 1;
+      min-width: 180px;
+      color: #2c2a26;
+    }
+
+    /* 优势网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.4rem 0 0.8rem;
+    }
+
+    @media (min-width: 540px) {
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .feature-item {
+      background: #f4f0ea;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+    }
+
+    .feature-item .ft-title {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #35312b;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #3d3a34;
+      margin-bottom: 0;
+    }
+
+    /* FAQ 摘要 */
+    .faq-block {
+      margin: 1.6rem 0 0.8rem;
+    }
+
+    .faq-row {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #e3ddd3;
+    }
+
+    .faq-row:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #2f2b25;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #494641;
+      font-size: 0.95rem;
+    }
+
+    .faq-a a {
+      color: #6b5d4b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
+    .faq-a a:hover {
+      color: #1f1c17;
+    }
+
+    /* 底部链接区 */
+    .bottom-links {
+      margin-top: 2.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e0d9cf;
+      font-size: 0.94rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.2rem;
+    }
+
+    .bottom-links a {
+      color: #6b5d4b;
+      text-decoration: none;
+      border-bottom: 1px dotted #cbc1b2;
+    }
+
+    .bottom-links a:hover {
+      border-bottom: 1px solid #3d352b;
+      color: #1f1c17;
+    }
+
+    .inline-link {
+      color: #6b5d4b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
+    .inline-link:hover {
+      color: #2b251e;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dad3c9;
+      margin: 2rem 0 1rem;
+    }
+
+    .footnote {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: #68645b;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero -->
+    <div class="hero">
+      <h1>爱游戏 · 日常查询与延伸阅读</h1>
+      <div class="subhead">对照 · 索引 · 内容备忘</div>
+      <p>在信息频繁流动的日常中，很多人习惯随手打开<a href="https://index-cns-igame.com" class="inline-link">爱游戏</a>，当作信息整理和话题扩展的起点。下面是一份围绕该站点常见使用场景的说明，方便新读者快速上手，也供老用户对照参考。</p>
+    </div>
+
+    <!-- 优势区：日常查询与对照 -->
+    <section>
+      <h2>为什么选择这样的信息入口</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="ft-title">📋 清单式梳理</div>
+          <p>条目清晰，分类明确，适合在需要快速定位某个类别或话题时对照翻阅，避免在海量信息中迷失。</p>
+        </div>
+        <div class="feature-item">
+          <div class="ft-title">🔗 延伸链结构</div>
+          <p>每项内容往往附带相关方向或参考条目，便于从一条记录自然扩展到另一主题，形成自己的阅读线索。</p>
+        </div>
+        <div class="feature-item">
+          <div class="ft-title">📆 更新有节奏</div>
+          <p>内容维持适度的刷新频率，既不会过于频繁打扰，也不会长期停滞，保持信息的新鲜感和可靠性。</p>
+        </div>
+        <div class="feature-item">
+          <div class="ft-title">🧩 低干扰阅读</div>
+          <p>页面布局侧重内容本身，去除了大量弹窗和自动播放元素，适合静心浏览或分屏对照。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 说明区 + 提示框 -->
+    <section>
+      <h2>常见的使用姿势</h2>
+      <div class="note-card">
+        <span class="label">🔍 查询场景</span>
+        <span class="desc">需要核实某个分类条目、查看近期话题索引，或者寻找某个模糊记忆中的词组时，直接打开爱游戏作为对照基准。</span>
+      </div>
+      <div class="note-card">
+        <span class="label">📎 延伸阅读</span>
+        <span class="desc">页面内经常出现相互关联的条目，读一条时常带出两三条相关内容，适合顺着线索自己搜索或整理笔记。</span>
+      </div>
+
+      <div class="callout-box">
+        <p><strong>关于对照使用的一点提示</strong> —— 网站内容偏向归纳和汇总，并不替代原始来源。如果涉及具体数据或政策条款，建议回到对应官方页面或文档进行二次核实。把爱游戏当作目录和引子，能让日常信息查询更有条理。</p>
+      </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section>
+      <h2>FAQ 摘要 · 读者常问</h2>
+      <div class="faq-block">
+        <div class="faq-row">
+          <div class="faq-q">Q：页面上的分类索引是否覆盖所有子话题？</div>
+          <div class="faq-a">A：分类尽可能覆盖常见方向，但个别细分领域可能未单独列出。建议先用站内关键词过滤，如果找不到再通过<a href="https://index-cns-igame.com" class="inline-link">爱游戏</a>的导航路径向周边条目延伸。</div>
+        </div>
+        <div class="faq-row">
+          <div class="faq-q">Q：站内链接和外部链接是如何区分的？</div>
+          <div class="faq-a">A：内部条目通常以文字链或卡片形式呈现，外部链接则标注来源或额外说明。点击前可留意链接后缀或悬停提示。</div>
+        </div>
+        <div class="faq-row">
+          <div class="faq-q">Q：能否把这里的条目当作最终资料引用？</div>
+          <div class="faq-a">A：建议把爱游戏作为查找线索和对照脉络的起点，正式引用前应回溯到原始材料。平台本身不做原始数据发布，而是整理和索引角色。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 附加一段延伸段落 -->
+    <div class="callout-box" style="border-left-color: #b9aa93; margin-top: 0.2rem;">
+      <p><strong>📘 延伸思路参考：</strong> 假如你在查找某个不熟悉的关键词，可以先从爱游戏的分类列表中找到相近类别，然后利用页面内的关联条目逐步扩大范围。这种方式比直接全网搜索更能保持主题聚焦，也更容易形成自己的知识索引。</p>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="bottom-links">
+      <span>主要入口：<a href="https://index-cns-igame.com">爱游戏</a></span>
+      <span>内容索引 · 日常对照</span>
+      <span>建议搭配本地笔记使用</span>
+      <span>风格：整理向</span>
+    </div>
+
+    <hr>
+    <div class="footnote">
+      本页为读者自行整理的说明性介绍，所有引用均指向公开内容。爱游戏保持独立信息组织方式，不构成任何专业建议。
+    </div>
+  </div>
+</body>
+</html>
