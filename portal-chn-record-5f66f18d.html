@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加拿大28 — 稳定导航与信息页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fdefe0 0%, #fadbc8 40%, #f7ccb4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #3d2c24;
+        }
+
+        .page-wrapper {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-card {
+            background: rgba(255, 245, 238, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 42px;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 20px 35px -8px rgba(160, 100, 70, 0.25),
+                        0 0 0 1px rgba(255, 225, 200, 0.4);
+            margin-bottom: 2rem;
+            text-align: center;
+            transition: box-shadow 0.2s;
+        }
+
+        .hero-card:hover {
+            box-shadow: 0 24px 40px -10px rgba(140, 85, 55, 0.3),
+                        0 0 0 1px rgba(255, 210, 180, 0.6);
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: #dbaa8b;
+            color: #2b1f1a;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 0.25rem 1.2rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e2b89e, #ce9a7a);
+            color: #251a15;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #2d1d14;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #5a4034;
+            max-width: 600px;
+            margin: 0.5rem auto 1.2rem;
+        }
+
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: #c98864;
+            border-radius: 4px;
+            margin: 0.5rem auto 0;
+            opacity: 0.6;
+        }
+
+        .content-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #ffffffea;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 8px 20px -10px rgba(100, 60, 40, 0.2);
+            border: 1px solid rgba(255, 230, 210, 0.5);
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px -12px rgba(120, 70, 45, 0.25);
+            border-color: rgba(220, 170, 145, 0.5);
+        }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #2f1e15;
+            margin-bottom: 0.7rem;
+            border-left: 5px solid #c98864;
+            padding-left: 0.9rem;
+        }
+
+        .card p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #3f2d23;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-summary {
+            margin-top: 0.8rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid #edd6c6;
+        }
+
+        .faq-summary details {
+            margin-top: 0.4rem;
+        }
+
+        .faq-summary summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #4e3529;
+            padding: 0.3rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-summary summary::before {
+            content: "▸";
+            font-size: 1.2rem;
+            color: #b47b5c;
+            transition: transform 0.2s;
+        }
+
+        .faq-summary details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-summary details p {
+            margin: 0.4rem 0 0 1.4rem;
+            font-size: 0.95rem;
+            color: #5a4135;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: #cda281;
+            color: #1f150f;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            border: none;
+            box-shadow: 0 4px 8px rgba(130, 80, 55, 0.15);
+            transition: all 0.2s ease;
+            margin-top: 0.8rem;
+            background: linear-gradient(145deg, #dbb094, #c48764);
+            letter-spacing: 0.3px;
+        }
+
+        .link-button:hover {
+            background: #c28b6b;
+            box-shadow: 0 8px 16px rgba(120, 70, 45, 0.2);
+            transform: scale(1.02);
+        }
+
+        .link-button:active {
+            transform: scale(0.96);
+        }
+
+        .exit-note {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.2rem 1.8rem;
+            background: #f5e6dcb3;
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            font-size: 0.95rem;
+            color: #4b352a;
+            border: 1px solid #eaccb9;
+        }
+
+        .exit-note a {
+            color: #6a4230;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #be8c6f;
+            font-weight: 450;
+        }
+
+        .exit-note a:hover {
+            color: #3d251b;
+            text-decoration-color: #9c6d52;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #dbbaa8, transparent);
+            margin: 1rem 0 1.6rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .hero-card {
+                padding: 1.8rem 1rem;
+                border-radius: 32px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.4rem 1.2rem;
+                border-radius: 24px;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+            }
+
+            .link-button {
+                padding: 0.6rem 1.6rem;
+                font-size: 1rem;
+            }
+
+            .exit-note {
+                border-radius: 40px;
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            .hero-sub {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- hero 横幅卡片 -->
+    <div class="hero-card">
+        <div class="hero-label">导航 · 介绍</div>
+        <h1>加拿大28 · 稳定的起点</h1>
+        <p class="hero-sub">
+            一个偏向安静的入口，一个可以反复停下来了解的地方。
+        </p>
+        <div class="accent-line"></div>
+    </div>
+
+    <!-- 三个内容段 + faq 摘要 -->
+    <div class="content-grid">
+        <!-- 第一段：背景与定位 -->
+        <div class="card">
+            <h2>一个轻量的信息锚点</h2>
+            <p>
+                在信息流动很快的今天，许多页面追求即时跳转，反而忽略了浏览者最初的好奇与犹豫。
+                <strong>加拿大28</strong> 作为一类常被提及的数字主题，我们选择用更安静的方式呈现——
+                不是催促点击，而是先说明它是什么，以及如何找到相对稳定的浏览路径。
+            </p>
+            <p>
+                这个页面相当于一个简单的驿站：你可以先阅读几段介绍，再决定是否通过下方的链接前往更完整的内容区域。
+                没有弹窗，没有倒计时，也没有夸张的标语。我们希望你离开时带着清晰的印象，而不是被推着走的匆忙。
+            </p>
+            <div class="faq-summary">
+                <details>
+                    <summary>为什么强调「稳定入口」？</summary>
+                    <p>
+                        因为网站本身的结构或网络环境可能存在变化，一个简洁的导航页有助于减少反复搜索的麻烦。
+                        这里提供的 <a href="https://portal-chn-ca28.com" style="color:#6a4230; text-decoration: underline; text-underline-offset:2px;">加拿大28</a> 链接指向一致的基址，方便你收藏或下次直接使用。
+                    </p>
+                </details>
+            </div>
+        </div>
+
+        <!-- 第二段：特点与使用场景 -->
+        <div class="card">
+            <h2>场景与特点</h2>
+            <p>
+                无论你是偶然听说，还是已经有了初步了解，一个清晰的页面总能节省时间。
+                这个介绍页面向以下几类场景：
+            </p>
+            <p>
+                · 希望快速确认地址是否有效，并在同一位置阅读相关说明。<br>
+                · 希望在进入主要内容之前，先了解页面的基调与功能边界。<br>
+                · 需要一个简单的备忘点：把 <a href="https://portal-chn-ca28.com" style="color:#6a4230; text-decoration: underline; text-underline-offset:2px;">加拿大28</a> 放在这里，之后随时可以回看。
+            </p>
+            <p>
+                卡片式设计、暖色背景与宽松的间距，让阅读体验更接近杂志或笔记，而不是密集的导流页。
+                我们刻意减少了按钮数量，只保留最必要的链接，希望你感受到的是「可选」，而非「必须」。
+            </p>
+        </div>
+
+        <!-- 第三段：页面说明与提示 -->
+        <div class="card">
+            <h2>页面说明 · 一次温和的指引</h2>
+            <p>
+                这个页面本身不包含游戏、结果、数据或任何动态模块，它的功能是作为一个静态介绍与导航辅助。
+                如果你需要访问主题相关的完整界面，下面的链接会带你到对应的基础地址。
+            </p>
+            <p>
+                由于互联网环境持续变化，有时直接访问可能遇到延迟或调整。建议你在网络稳定的时段使用，
+                并留意页面的基本布局是否正常。如果遇到访问问题，可以稍后再试，或者通过其他可靠渠道核实。
+            </p>
+
+            <!-- 主要链接按钮——符合 a 标签文本严格等于「加拿大28」 -->
+            <a href="https://portal-chn-ca28.com" class="link-button">加拿大28</a>
+
+            <hr>
+            <p style="font-size:0.9rem; color:#5f4639;">
+                ⚬ 链接文本未添加任何额外词汇，你可以自由决定如何使用它。
+            </p>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="exit-note">
+        <span style="opacity:0.8;">📌 如果你已经做好准备，可以随时通过上面的链接前往 </span>
+        <a href="https://portal-chn-ca28.com">加拿大28</a>
+        <span style="opacity:0.8;"> 页面。祝你浏览愉快，保持自己的节奏。</span>
+    </div>
+</div>
+</body>
+</html>
